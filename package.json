@@ -1,0 +1,16 @@
+{
+  "name": "nodejs-test",
+  "version": "1.0.0",
+  "description": "learning nodejs",
+  "main": "app.js",
+  "dependencies": {
+    "express": "^4.16.4",
+    "mysql": "^2.16.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "nanda",
+  "license": "ISC"
+}
