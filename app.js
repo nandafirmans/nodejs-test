@@ -1,21 +1,28 @@
-/*
-var Logger = require('./logger');
-var logger = new Logger();
-
-logger.on('logged', (arg) => {
-  console.log('Event Listener Called', arg);
-});
-
-logger.log('cok testing');
-*/
-
 var http = require('http');
 
-http
-    .createServer((req, res) => {
-	res.write('hello world');
-	res.end();
-    })
-    .listen(8090);
+const server = http.createServer((req, res) => {
+    if(req.url === "/") {
+        res.write("Hello World");
+    }
 
+    if(req.url === "/api/fake") {
+        const users = [
+            {
+                id: 1,
+                name: "john"
+            },
+            {
+                id: 2,
+                name: "doe"
+            }
+        ];
 
+        res.write(JSON.stringify(users));
+    }
+
+    res.end();
+});
+
+server.listen(3000);
+
+console.log("Listening on port 3000...");
