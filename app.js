@@ -15,7 +15,9 @@ app.get("/api/courses/:id", (req, res) => {
     const course = courses.fetch(req.params.id);
 
     if (!course) {
-        res.status("404").send("courses with given ID is not exist");
+        res.status("404")
+            .send("given ID is not exist");
+
         return;
     }
 
@@ -30,7 +32,8 @@ app.post("/api/courses", (req, res) => {
     const result = Joi.validate(req.body, schema);
 
     if (result.error) {
-        const errMessage = result.error.details.map(err => err.message).join(" | ");
+        const errMessage = result.error.details
+            .map(err => err.message).join(" | ");
 
         res.status(400).send(errMessage);
         return;
@@ -41,6 +44,7 @@ app.post("/api/courses", (req, res) => {
 });
 
 const port = process.env.PORT || 3000;
-app.listen(port, () => console.log(`Listening on port ${port}...`));
+app.listen(port, () =>
+    console.log(`Listening on port ${port}...`));
 
 
